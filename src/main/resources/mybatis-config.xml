@@ -3,15 +3,37 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!--properties: resources ==> 引用配置文件-->
+    <properties resource="mybatis-jdbc.properties"/>
+    <!--typeAliases 起别名 ==> typeAlias + type alias ===> package + name -->
+    <typeAliases>
+        <typeAlias type="com.kk.pojo.Student" alias="student"/>
+        <package name="com.kk.pojo"/>
+    </typeAliases>
     <environments default="mysql">
         <environment id="mysql">
+            <!--
+                transactionManager 标签：type ==> JDBC/MANAGED
+                    JDBC: 表示当前环境中执行 SQL 使用的是 JDBC 原生管理方式，事务的提交需要手动 COMMIT/ROLLBACK
+                    MANAGED: 被管理，比如 Spring
+                dataSource 标签：type ==> POOLED/UNPOOLED/JNDI
+                    POOLED: 表示使用数据库连接池缓存连接数据库
+                    UNPOOLED: 表示不使用数据库连接池
+                    JNDI: 表示使用上下文中的数据源
+            -->
             <transactionManager type="JDBC"></transactionManager>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306?useSSL=false&amp;serverTimezone=Asia/Shanghai"/>
-                <property name="username" value="root"/>
-                <property name="password" value="123456"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
+    <mappers>
+        <mapper resource="com/kk/mapper/StudentMapper.xml"/>
+    </mappers>
+    <!--<mappers>-->
+    <!--    <package name="com.kk.mapper"/>-->
+    <!--</mappers>-->
 </configuration>
