@@ -13,4 +13,5 @@ public class Employee {
     private Integer age;
     private String sex;
     private String email;
+    private Department department;
 }
