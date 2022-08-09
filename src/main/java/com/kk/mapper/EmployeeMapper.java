@@ -12,4 +12,5 @@ public interface EmployeeMapper {
     public abstract List<Employee> selectEmployeeIncludeDeptResultMap();
     public abstract List<Employee> selectEmployeeByAssociation();
     public abstract List<Employee> selectEmployeeByAssociationAndLazyLoad();
+    public abstract Employee selectEmployeeByAssociationAndLazyLoadGreat(Integer eid);
 }
