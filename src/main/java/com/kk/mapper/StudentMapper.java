@@ -7,4 +7,5 @@ public interface StudentMapper {
     public abstract int deleteStudent();
     public abstract int updateStudent();
     public abstract Student selectStudent();
+    public abstract Student selectStudentByName(String name);
 }

@@ -146,7 +146,7 @@ public interface StudentMapper {
 }
 ```
 
-创建`com.kk.service.StudentService`类：
+创建`com.kk.service.StudentService1`类：
 
 ```java
 package com.kk.service;
