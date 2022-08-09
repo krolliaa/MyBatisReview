@@ -50,4 +50,13 @@
     <select id="selectStudentForMap" resultType="student">
         select * from student
     </select>
+    <select id="selectStudentByFind1" resultType="student">
+        select * from student where `name` like '%${name}%'
+    </select>
+    <select id="selectStudentByFind2" resultType="student">
+        select * from student where `name` like concat('%', #{name}, '%')
+    </select>
+    <select id="selectStudentByFind3" resultType="student">
+        select * from student where `name` like '%'#{name}'%'
+    </select>
 </mapper>

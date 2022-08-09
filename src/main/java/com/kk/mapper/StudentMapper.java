@@ -19,4 +19,7 @@ public interface StudentMapper {
     public abstract List<Student> selectStudentForList();
     @MapKey(value = "id")
     public abstract Map<String, Student> selectStudentForMap();
+    public abstract List<Student> selectStudentByFind1(String name);
+    public abstract List<Student> selectStudentByFind2(String name);
+    public abstract List<Student> selectStudentByFind3(String name);
 }
