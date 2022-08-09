@@ -6,7 +6,17 @@
     <select id="selectEmployeeByListTypeAliases" resultType="employee">
         select eid, emp_name empName, age, sex, email from t_emp;
     </select>
-    <select id="selectEmployeeByListMapUnderscorpeToCamelCase" resultType="employee">
+    <select id="selectEmployeeByListMapUnderscoreToCamelCase" resultType="employee">
         select eid, emp_name, age, sex, email from t_emp;
+    </select>
+    <resultMap id="myEmployee" type="employee">
+        <id property="eId" column="eid"/>
+        <result property="empName" column="emp_name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="email" column="email"/>
+    </resultMap>
+    <select id="selectEmployeeByResultMap" resultMap="myEmployee">
+        select * from t_emp
     </select>
 </mapper>
