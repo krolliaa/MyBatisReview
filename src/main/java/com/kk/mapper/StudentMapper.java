@@ -22,4 +22,5 @@ public interface StudentMapper {
     public abstract List<Student> selectStudentByFind1(String name);
     public abstract List<Student> selectStudentByFind2(String name);
     public abstract List<Student> selectStudentByFind3(String name);
+    public abstract int insertStudentUseGeneratedKeys(Student student);
 }

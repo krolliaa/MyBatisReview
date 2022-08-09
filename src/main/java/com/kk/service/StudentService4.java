@@ -1,6 +1,7 @@
 package com.kk.service;
 
 import com.kk.mapper.StudentMapper;
+import com.kk.pojo.Student;
 import com.kk.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
@@ -17,5 +18,10 @@ public class StudentService4 {
         System.out.println(list2);
         List list3 = studentMapper.selectStudentByFind3("o");
         System.out.println(list3);
+        Student student = new Student();
+        student.setName("pat");
+        student.setAge(21);
+        int result = studentMapper.insertStudentUseGeneratedKeys(student);
+        System.out.println(result);
     }
 }

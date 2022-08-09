@@ -59,4 +59,7 @@
     <select id="selectStudentByFind3" resultType="student">
         select * from student where `name` like '%'#{name}'%'
     </select>
+    <insert id="insertStudentUseGeneratedKeys" useGeneratedKeys="true" keyProperty="id">
+        insert into student(`name`, `age`) values(#{name}, #{age});
+    </insert>
 </mapper>
