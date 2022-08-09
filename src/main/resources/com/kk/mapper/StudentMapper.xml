@@ -6,4 +6,14 @@
     <insert id="insertStudent">
         insert into student(`id`, `name`, `age`) values(4, "pat", 21)
     </insert>
+    <delete id="deleteStudent">
+        delete from student where id = 4
+    </delete>
+    <update id="updateStudent">
+        update student set `name` = "cat" where id = 4
+    </update>
+    <!--在配置文件中加入了 typeAliases 起了别名所以不需要-->
+    <select id="selectStudent" resultType="student">
+        select * from student where id = 4
+    </select>
 </mapper>
