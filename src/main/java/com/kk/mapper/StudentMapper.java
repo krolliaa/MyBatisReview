@@ -1,6 +1,7 @@
 package com.kk.mapper;
 
 import com.kk.pojo.Student;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Map;
 
@@ -12,4 +13,5 @@ public interface StudentMapper {
     public abstract Student selectStudentByName(String name);
     public abstract Student selectStudentByNameAndAge(Map map);
     public abstract Student selectStudentByNameAndAge(Student student);
+    public abstract Student selectStudentByParam(@Param(value = "idCool") Integer id);
 }
