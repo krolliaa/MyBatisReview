@@ -37,6 +37,7 @@
     <select id="selectStudentByNameAndAge" resultType="student">
         select * from student where `name` = #{name} and age = #{age}
     </select>
+    <!--补充：本质上是从实体类的 getter 方法中获取，所以 getter 方法中的名字一定要跟这里的 SQL 语句名称保持一致-->
     <select id="selectStudentByStudent" resultType="student">
         select * from student where id = #{id} and `name` = #{name} and age = #{age}
     </select>
