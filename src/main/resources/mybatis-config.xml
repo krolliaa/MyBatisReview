@@ -5,6 +5,10 @@
 <configuration>
     <!--properties: resources ==> 引用配置文件-->
     <properties resource="mybatis-jdbc.properties"/>
+    <!--mapUnderScopeToCamelCase-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
     <!--typeAliases 起别名 ==> typeAlias + type alias ===> package + name -->
     <typeAliases>
         <typeAlias type="com.kk.pojo.Student" alias="student"/>

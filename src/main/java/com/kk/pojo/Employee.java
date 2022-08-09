@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
-    private Integer id;
+    private Integer eId;
     private String empName;
     private Integer age;
     private String sex;

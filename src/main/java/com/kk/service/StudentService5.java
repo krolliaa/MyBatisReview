@@ -12,7 +12,9 @@ public class StudentService5 {
     public static void main(String[] args) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
-        List list = employeeMapper.selectEmployeeByList();
-        System.out.println(list);
+        List list1 = employeeMapper.selectEmployeeByListTypeAliases();
+        System.out.println(list1);
+        List list2 = employeeMapper.selectEmployeeByListMapUnderscorpeToCamelCase();
+        System.out.println(list2);
     }
 }
