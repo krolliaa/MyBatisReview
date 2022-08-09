@@ -42,6 +42,12 @@
         select * from student where id = #{id} and `name` = #{name} and age = #{age}
     </select>
     <select id="selectStudentByParam" resultType="student">
-        select * from student where id = #{idCool};
+        select * from student where id = #{idCool}
+    </select>
+    <select id="selectStudentForList" resultType="student">
+        select * from student
+    </select>
+    <select id="selectStudentForMap" resultType="student">
+        select * from student
     </select>
 </mapper>
