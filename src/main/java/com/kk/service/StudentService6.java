@@ -12,5 +12,7 @@ public class StudentService6 {
         EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
         List list1 = employeeMapper.selectEmployeeIncludeDeptResultMap();
         System.out.println(list1);
+        List list2 = employeeMapper.selectEmployeeByAssociation();
+        System.out.println(list2);
     }
 }

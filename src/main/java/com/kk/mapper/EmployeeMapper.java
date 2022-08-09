@@ -10,4 +10,5 @@ public interface EmployeeMapper {
     public abstract List<Employee> selectEmployeeByListMapUnderscoreToCamelCase();
     public abstract List<Employee> selectEmployeeByResultMap();
     public abstract List<Employee> selectEmployeeIncludeDeptResultMap();
+    public abstract List<Employee> selectEmployeeByAssociation();
 }
