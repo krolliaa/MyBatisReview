@@ -37,4 +37,7 @@
     <select id="selectStudentByNameAndAge" resultType="student">
         select * from student where `name` = #{name} and age = #{age}
     </select>
+    <select id="selectStudentByStudent" resultType="student">
+        select * from student where id = #{id} and `name` = #{name} and age = #{age}
+    </select>
 </mapper>

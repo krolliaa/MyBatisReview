@@ -20,5 +20,7 @@ public class StudentService2 {
         map.put("age", "13");
         Student student1 = studentMapper.selectStudentByNameAndAge(map);
         System.out.println(student1);
+        Student student2 = studentMapper.selectStudentByNameAndAge(student);
+        System.out.println(student2);
     }
 }

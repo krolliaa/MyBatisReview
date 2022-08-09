@@ -11,4 +11,5 @@ public interface StudentMapper {
     public abstract Student selectStudent();
     public abstract Student selectStudentByName(String name);
     public abstract Student selectStudentByNameAndAge(Map map);
+    public abstract Student selectStudentByNameAndAge(Student student);
 }
