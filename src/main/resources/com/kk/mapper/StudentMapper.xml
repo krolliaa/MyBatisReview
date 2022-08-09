@@ -16,8 +16,22 @@
     <select id="selectStudent" resultType="student">
         select * from student where id = 4
     </select>
-    <select id="selectStudentByName" resultType="student">
-        --select * from student where name = #{aaa}
-        select * from student where name = '${name}'
+    <!--<select id="selectStudentByName" resultType="student">
+        select * from student where name = #{name}
     </select>
+    <select id="selectStudentByName" resultType="student">
+        select * from student where name = '${name}'
+    </select>-->
+    <!--<select id="selectStudentByName" resultType="student">
+        select * from student where name = '${arg0}'
+    </select>-->
+    <!--<select id="selectStudentByName" resultType="student">
+        select * from student where name = '${name}'
+    </select>-->
+    <select id="selectStudentByName" resultType="student">
+        select * from student where name = #{arg0}
+    </select>
+    <!--<select id="selectStudentByName" resultType="student">
+        select * from student where name = #{param1}
+    </select>-->
 </mapper>
