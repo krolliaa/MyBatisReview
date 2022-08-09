@@ -21,6 +21,7 @@ public class StudentService10 {
          */
 
         /*
+            SqlSessionFactory
             二级缓存：一级缓存默认开启，二级缓存默认不开启
             使用二级缓存需要满足四个条件：
             1.MyBatis 配置文件中 <settings> 标签中需要使用 <setting name="cacheEnabled" value="true"/>
