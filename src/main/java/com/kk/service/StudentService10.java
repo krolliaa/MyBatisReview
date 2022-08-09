@@ -29,6 +29,13 @@ public class StudentService10 {
             3.二级缓存必须在 SqlSession 关闭或提交之后有效，否则数据将保存在一级缓存中，只有在关闭/提交了之后才会保存到二级缓存中
             4.实体类需要使用学历恶化 implements Serializable
          */
+
+        /*
+            - 先查询二级缓存，因为二级缓存中可能有其它程序已经查出来的数据，可以直接拿来使用
+            - 如果二级缓存没有命中，再查询一级缓存
+            - 如果一级缓存也没有名字，则查询数据库
+            - SqlSession 关闭后，一级缓存中的数据会写入到二级缓存中
+         */
         List<Department> departmentList1 = departmentMapper.selectDepartmentByDId(1);
         System.out.println(departmentList1);
         List<Department> departmentList2 = departmentMapper.selectDepartmentByDId(1);
