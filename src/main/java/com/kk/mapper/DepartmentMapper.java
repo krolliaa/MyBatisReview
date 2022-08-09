@@ -2,6 +2,8 @@ package com.kk.mapper;
 
 import com.kk.pojo.Department;
 
+import java.util.List;
+
 public interface DepartmentMapper {
-    public abstract Department selectDepartmentByDId(Integer did);
+    public abstract List<Department> selectDepartmentByDId(Integer did);
 }

@@ -6,9 +6,16 @@
     <resultMap id="myDepartment" type="department">
         <id property="dId" column="did"/>
         <result property="deptName" column="dept_name"/>
+        <!--<collection property="employees" select="com.kk.mapper.EmployeeMapper.selectEmployeeListByDeptDid" column="dId" fetchType="lazy"/>-->
+        <collection property="employees" ofType="employee">
+            <id property="eId" column="eid"/>
+            <result property="empName" column="emp_name"/>
+            <result property="age" column="age"/>
+            <result property="sex" column="sex"/>
+            <result property="email" column="email"/>
+        </collection>
     </resultMap>
-    
     <select id="selectDepartmentByDId" resultMap="myDepartment">
-        select * from t_dept where did = #{did}
+        select * from t_dept left join t_emp on t_dept.did = t_emp.did
     </select>
 </mapper>

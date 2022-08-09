@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kk.mapper.EmployeeMapperBak">
+    <select id="selectEmployeeByListTypeAliases" resultType="employee">
+        select eid, emp_name empName, age, sex, email from t_emp;
+    </select>
+    <select id="selectEmployeeByListMapUnderscoreToCamelCase" resultType="employee">
+        select eid, emp_name, age, sex, email from t_emp;
+    </select>
+    <resultMap id="myEmployee" type="employee">
+        <id property="eId" column="eid"/>
+        <result property="empName" column="emp_name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="email" column="email"/>
+    </resultMap>
+    <select id="selectEmployeeByResultMap" resultMap="myEmployee">
+        select * from t_emp
+    </select>
+
+    <!--使用传统模式解决一对多映射问题-->
+    <resultMap id="includeDept" type="employee">
+        <id property="eId" column="eid"/>
+        <result property="empName" column="emp_name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="email" column="email"/>
+        <result property="department.dId" column="did"/>
+        <result property="department.deptName" column="dept_name"/>
+    </resultMap>
+    <select id="selectEmployeeIncludeDeptResultMap" resultMap="includeDept">
+        select * from t_emp inner join t_dept on t_emp.did = t_dept.did
+    </select>
+
+    <!--使用association解决一对多映射问题-->
+    <resultMap id="associationDepartment" type="employee">
+        <id property="eId" column="eid"/>
+        <result property="empName" column="emp_name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="email" column="email"/>
+        <association property="department" javaType="department">
+            <id property="dId" column="did"/>
+            <result property="deptName" column="dept_name"/>
+        </association>
+    </resultMap>
+    <select id="selectEmployeeByAssociation" resultMap="associationDepartment">
+        select * from t_emp inner join t_dept on t_emp.did = t_dept.did
+    </select>
+
+    <!--使用分布查询解决一对多映射问题-->
+    <resultMap id="associationAndLazyLoad" type="employee">
+        <id property="eId" column="eid"/>
+        <result property="empName" column="emp_name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="email" column="email"/>
+        <association property="department" select="com.kk.mapper.DepartmentMapperBak.selectDepartmentByDId" column="did">
+        </association>
+    </resultMap>
+    <select id="selectEmployeeByAssociationAndLazyLoad" resultMap="associationAndLazyLoad">
+        select * from t_emp where eid = #{eid}
+    </select>
+
+    <!--使用分步查询的好处：懒加载-->
+    <resultMap id="associationAndLazyLoadGreat" type="employee">
+        <id property="eId" column="eid"/>
+        <result property="empName" column="emp_name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="email" column="email"/>
+        <association property="department" select="com.kk.mapper.DepartmentMapperBak.selectDepartmentByDId" column="did" fetchType="lazy">
+        </association>
+    </resultMap>
+    <select id="selectEmployeeByAssociationAndLazyLoadGreat" resultMap="associationAndLazyLoadGreat">
+        select * from t_emp where eid = #{eid}
+    </select>
+</mapper>
